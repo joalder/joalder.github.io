@@ -1,55 +1,55 @@
 [
 {
-	"uri": "http://example.org/_header/",
+	"uri": "https://joalder.github.io/_header/",
 	"title": "header",
 	"tags": [],
 	"description": "",
 	"content": "Jo\u0026rsquo;s Cheat Sheets\n"
 },
 {
-	"uri": "http://example.org/cheatsheets/",
+	"uri": "https://joalder.github.io/cheatsheets/",
 	"title": "Cheatsheets Collection",
 	"tags": [],
 	"description": "Technologies, Principles and Methods distilled",
 	"content": "What the title says, split up into different technologies, principles or methods.\nObviously the content is not a copy of existing stuff. If good collections exist already, they are referenced.\n"
 },
 {
-	"uri": "http://example.org/",
+	"uri": "https://joalder.github.io/",
 	"title": "Home",
 	"tags": [],
 	"description": "-",
 	"content": " Welcome to my humble Place This page is mainly for my personal use as a collection of knowledge. Have a look at the menu and help yourself. If you don\u0026rsquo;t find what you were looking for, you\u0026rsquo;re probably wrong here\u0026hellip;\nIf something on this page is bugging you, or is flat out wrong, drop me a line. You\u0026rsquo;ll find a way.\n"
 },
 {
-	"uri": "http://example.org/cheatsheets/cleancode/",
+	"uri": "https://joalder.github.io/cheatsheets/cleancode/",
 	"title": "Clean Code",
 	"tags": [],
 	"description": "",
 	"content": " This is a summary of the most important and revealing topics from my point of view. These have, for now, been gathered from the official Clean Code books by Uncle Bob (Robert C. Martin). Quotes indicate literal sections from these books.\nClean Code: A Handbook of Agile Software Craftsmanship (ISBN-13: 978-0132350884)\nThe Clean Coder: A Code of Conduct for Professional Programmers (ISBN-13: 978-0137081073)\nThe cheat sheet should be helpful as a guideline in reviews or when in doubt about the cleanliness of some code.\nTODO: levels of detail (bad TODO, already forgot what I meant)\nFormatting \u0026amp; Ordering As a general note, every project should have a clearly defined style of formatting elaborated and followed by the whole team. Code is usually the easiest way to describe these rules.\nDependant Functions Dependant functions should be close to each other and in the order of their call, if possible. Helps with readability and natural flow. Nice example: Static factory methods on top before private constructor.\nConceptual Affinity Even if the functions have no direct dependency, they might be conceptually very similar and should thus be grouped/close.\nHorizontal Alignment Spacing e.g. the types and names of member variables of a class can be suboptimal as it may disconnect the relation between the names and type of a variable. If there are such long lists of variables or assignments it\u0026rsquo;s probably a hint to split the class/function.\nObjects \u0026amp; Data Structures Nice differentiation about data vs. object \u0026gt; Procedural code (code using data structures) makes it easy to add new functions without changing the existing data structures. \u0026gt; OO code, on the other hand, makes it easy to add new classes without changing existing functions.\nComplement: \u0026gt; Procedural code makes it hard to add new data structures because all the functions must change. \u0026gt; OO code makes it hard to add new functions because all the classes must change.\nIn essence: - Objects expose abstractions and functions - Data structures expose their data (e.g. data transfer objects DTO)\nGoal is to have a clear separation between these to types. Can also be seen as data vs. business logic.\nLaw of Demeter Train wrecks and stuff. Not really sure about that yet.. Law of Demeter only applies to objects and not to data structures.\nException Handling Write try-catch-finally first, test it, narrow and refine it.\nAdd meaningful messages to each and every exception you throw.\nAlways think of exceptions form the perspective of the caller/catcher. Only create different exception classes if you need to catch it at different places.\nSpecial case objects instead of exception may be a nicer flow for the caller.\nDon\u0026rsquo;t return null, throw exceptions or return special case. In Java8 there would even be the possibility to wrap the whole thing into an Optional to make the handling easier.\nChecked Exceptions The war is over, checked exceptions lost, move on.\nIn general their violation of OCP is the most important drawback. It leads to massive decapsulation (seems like this is no CS term, but I\u0026rsquo;ll use it anyway) in your code base. It might be still handy in a few situations, but be sure to bring lots of arguments for your use!\nAlso frameworks like Spring use unchecked exceptions pretty much exclusively and even wrap checked into unchecked ones for you.\nBoundaries Encapsulate mutable objects if necessary. Possibly wrap them into immutable of needed to pass anyways.\nLearning Tests Nice idea to validate possible use, ensure functionality and learn the API of third party library.\nTesting Build - Operate - Check should be clearly visible when looking at tests\nThe three laws of TDD   You may not write production code until you have written a failing unit test. You may not write mor of a unit test than is sufficient to fail, and not compiling is failing. You may not write more production code than is sufficient to pass the currently failing test.   Logging A log message without a dynamic component (think placeholder) is useless.\n"
 },
 {
-	"uri": "http://example.org/cheatsheets/docker/",
+	"uri": "https://joalder.github.io/cheatsheets/docker/",
 	"title": "Docker",
 	"tags": [],
 	"description": "",
 	"content": " Platform \u0026amp; Version: Docker for Windows, Docker 1.17 unless otherwise noted. Some commands require a bash compatible shell.\nSetup Docker for Windows 10 finally should improve on the VPN issues, as it does not rely on the Virtualbox interfaces anymore. However new issues seem to arise with Wi-Fi. On first setup, I landed here. Fortunately the Docker doc has some troubleshooting help on the topic. Best part of all that? It does not seem to be Dockers fault. After playing around with the virtual switches of Hyper-V, just adding even an external one, seems to kill the Wi-Fi interface. So what has Microsoft to say? A little here and there .\nContainer management Find the IP address of a running container\ndocker inspect \u0026lt;container\u0026gt; -f \u0026quot;{{ .NetworkSettings.IPAddress }}\u0026quot;  Filtering inspect inspect is achieved with GO templating.\n# Combine with static text docker inspect storage -f \u0026quot;The container {{.Config.Hostname}}{{.Name}} has IP {{ .NetworkSettings.IPAddress }}\u0026quot; # Or techy for all containers for later reuse docker inspect $(docker ps|awk '{print $1}'|grep -iv container) -f \u0026quot;{{.Config.Hostname}}={{ .NetworkSettings.IPAddress }}\u0026quot; f445927fa494=172.17.0.2 # A little cleaner docker ps -q | xargs docker inspect -f \u0026quot;{{.Config.Hostname}}={{ .NetworkSettings.IPAddress }}\u0026quot; f445927fa494=172.17.0.2  Cleanup got a whole lot easier since 1.13! Instead of the piped dangling=true calls one can now:\ndocker system prune docker container prune docker image prune docker volume prune docker network prune  For reference, pre 1.13 this would have looked like\n# Remove dead containers docker ps -f status=dead --format '{{ .ID }}' | xargs -r docker rm -v # Remove dangling volumes docker volume ls -qf dangling=true | xargs -r docker volume rm # Remove dangling images docker images -qf dangling=true | xargs -r docker rmi  Dockerfile Docker Machine "
 },
 {
-	"uri": "http://example.org/cheatsheets/markdown/",
+	"uri": "https://joalder.github.io/cheatsheets/markdown/",
 	"title": "Markdown",
 	"tags": [],
 	"description": "",
 	"content": " References Pretty showcase by adam-p/markdown-here\nOriginal Spec by John Gruber\nGithub flavor reference\n"
 },
 {
-	"uri": "http://example.org/categories/",
+	"uri": "https://joalder.github.io/categories/",
 	"title": "Categories",
 	"tags": [],
 	"description": "",
 	"content": ""
 },
 {
-	"uri": "http://example.org/tags/",
+	"uri": "https://joalder.github.io/tags/",
 	"title": "Tags",
 	"tags": [],
 	"description": "",

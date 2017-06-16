@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Home on Jeatsheets</title>
-    <link>http://example.org/</link>
+    <link>https://joalder.github.io/</link>
     <description>Recent content in Home on Jeatsheets</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 16 Jun 2017 10:31:35 +0200</lastBuildDate>
     
-	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://joalder.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>header</title>
-      <link>http://example.org/_header/</link>
+      <link>https://joalder.github.io/_header/</link>
       <pubDate>Fri, 16 Jun 2017 10:55:43 +0200</pubDate>
       
-      <guid>http://example.org/_header/</guid>
+      <guid>https://joalder.github.io/_header/</guid>
       <description>Jo&amp;rsquo;s Cheat Sheets</description>
     </item>
     
     <item>
       <title>Clean Code</title>
-      <link>http://example.org/cheatsheets/cleancode/</link>
+      <link>https://joalder.github.io/cheatsheets/cleancode/</link>
       <pubDate>Thu, 15 Jun 2017 15:21:32 +0200</pubDate>
       
-      <guid>http://example.org/cheatsheets/cleancode/</guid>
+      <guid>https://joalder.github.io/cheatsheets/cleancode/</guid>
       <description>This is a summary of the most important and revealing topics from my point of view. These have, for now, been gathered from the official Clean Code books by Uncle Bob (Robert C. Martin). Quotes indicate literal sections from these books.
 Clean Code: A Handbook of Agile Software Craftsmanship (ISBN-13: 978-0132350884)
 The Clean Coder: A Code of Conduct for Professional Programmers (ISBN-13: 978-0137081073)
@@ -34,20 +34,20 @@ The cheat sheet should be helpful as a guideline in reviews or when in doubt abo
     
     <item>
       <title>Docker</title>
-      <link>http://example.org/cheatsheets/docker/</link>
+      <link>https://joalder.github.io/cheatsheets/docker/</link>
       <pubDate>Wed, 14 Jun 2017 14:21:44 +0200</pubDate>
       
-      <guid>http://example.org/cheatsheets/docker/</guid>
+      <guid>https://joalder.github.io/cheatsheets/docker/</guid>
       <description>Platform &amp;amp; Version: Docker for Windows, Docker 1.17 unless otherwise noted. Some commands require a bash compatible shell.
 Setup Docker for Windows 10 finally should improve on the VPN issues, as it does not rely on the Virtualbox interfaces anymore. However new issues seem to arise with Wi-Fi. On first setup, I landed here. Fortunately the Docker doc has some troubleshooting help on the topic. Best part of all that?</description>
     </item>
     
     <item>
       <title>Markdown</title>
-      <link>http://example.org/cheatsheets/markdown/</link>
+      <link>https://joalder.github.io/cheatsheets/markdown/</link>
       <pubDate>Tue, 13 Jun 2017 12:27:32 +0200</pubDate>
       
-      <guid>http://example.org/cheatsheets/markdown/</guid>
+      <guid>https://joalder.github.io/cheatsheets/markdown/</guid>
       <description>References Pretty showcase by adam-p/markdown-here
 Original Spec by John Gruber
 Github flavor reference</description>

@@ -3,42 +3,42 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://example.org/_header/</loc>
+    <loc>https://joalder.github.io/_header/</loc>
     <lastmod>2017-06-16T10:55:43+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/cheatsheets/</loc>
+    <loc>https://joalder.github.io/cheatsheets/</loc>
     <lastmod>2017-06-16T10:32:35+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/</loc>
+    <loc>https://joalder.github.io/</loc>
     <lastmod>2017-06-16T10:31:35+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/cheatsheets/cleancode/</loc>
+    <loc>https://joalder.github.io/cheatsheets/cleancode/</loc>
     <lastmod>2017-06-15T15:21:32+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/cheatsheets/docker/</loc>
+    <loc>https://joalder.github.io/cheatsheets/docker/</loc>
     <lastmod>2017-06-14T14:21:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/cheatsheets/markdown/</loc>
+    <loc>https://joalder.github.io/cheatsheets/markdown/</loc>
     <lastmod>2017-06-13T12:27:32+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://joalder.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://joalder.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   
