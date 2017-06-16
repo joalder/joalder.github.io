@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" class="js csstransforms3d">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="generator" content="Hugo 0.22" />
+    <meta name="description" content="">
+
+
+    <title>Clean Code :: Jeatsheets</title>
+    <link rel="shortcut icon" href="/images/favicon.png" type="image/x-icon" />
+    <link href="/css/nucleus.css" rel="stylesheet">
+    <link href="/css/font-awesome.min.css" rel="stylesheet">
+    <link href="/css/hybrid.css" rel="stylesheet">
+    <link href="/css/featherlight.min.css" rel="stylesheet">
+    <link href="/css/horsey.css" rel="stylesheet">
+    <link href="/css/theme.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <script src="/js/jquery-2.x.min.js"></script>
+    <style type="text/css">
+      :root #header + #content > #left > #rlblock_left {
+        display:none !important;
+      }
+    </style>
+
+    
+
+    
+
+  </head>
+  <body class="" data-url="/cheatsheets/cleancode/">
+    <nav id="sidebar" class="">
+  <div id="header-wrapper">
+    <div id="header">
+       
+	<p>Jo&rsquo;s Cheat Sheets</p>
+ 
+
+
+    </div>
+    
+        <div class="searchbox">
+    <label for="search-by"><i class="fa fa-search"></i></label>
+    <input data-search-input id="search-by" type="text" placeholder="Search...">
+    <span data-search-clear=""><i class="fa fa-close"></i></span>
+</div>
+<script type="text/javascript" src="/js/lunr.min.js"></script>
+<script type="text/javascript" src="/js/horsey.js"></script>
+<script type="text/javascript">
+    var baseurl = "http:\/\/example.org\/";
+</script>
+<script type="text/javascript" src="/js/search.js"></script>
+
+    
+  </div>
+
+
+
+
+
+<div class="highlightable">
+    <ul class="topics">
+        
+        
+            <li data-nav-id="/" class="dd-item">
+            <a href="/"><i class="fa fa-fw fa-home"></i></a>
+            </li>
+        
+
+        
+
+
+
+
+<li data-nav-id="/cheatsheets/" class="dd-item 
+parent
+
+
+">
+  <a href="/cheatsheets/">
+    <span>Cheatsheets Collection</span>
+
+    
+    <i class="fa fa-angle-down fa-lg category-icon"></i>
+    
+    
+    
+  </a>
+    <ul>
+        
+         
+          <li data-nav-id="/cheatsheets/cleancode/" class="dd-item
+         active
+          ">
+            <a href="/cheatsheets/cleancode/">
+            <span>Clean Code</span> 
+            
+
+            </a></li>
+         
+        
+         
+          <li data-nav-id="/cheatsheets/docker/" class="dd-item
+         
+          ">
+            <a href="/cheatsheets/docker/">
+            <span>Docker</span> 
+            
+
+            </a></li>
+         
+        
+         
+          <li data-nav-id="/cheatsheets/markdown/" class="dd-item
+         
+          ">
+            <a href="/cheatsheets/markdown/">
+            <span>Markdown</span> 
+            
+
+            </a></li>
+         
+        
+        
+
+
+
+
+    </ul>
+</li>
+
+
+
+        
+        <section id="shortcuts">
+            
+                <li class="" role="">
+                    <h3>More</h3>
+                    <a href="https://github.com/joalder"><i class='fa fa-github'></i> My Github</a>
+                    
+                </li>
+            
+                <li class="" role="">
+                    
+                    <a href="https://gohugo.io/"><i class='fa fa-bookmark'></i> Hugo Docs</a>
+                    
+                </li>
+            
+        </section>    
+        
+        
+
+        
+    </ul>
+    
+     
+    <section id="footer">
+      
+    </section>
+  </div>
+</nav>
+
+
+
+        <section id="body">
+        <div id="overlay"></div>
+        <div class="padding highlightable">
+        
+          <div id="top-bar">
+            
+
+            <div id="breadcrumbs" itemscope="" itemtype="http://data-vocabulary.org/Breadcrumb">
+                <span id="sidebar-toggle-span">
+                  <a href="#" id="sidebar-toggle" data-sidebar-toggle="">
+                    <i class="fa fa-bars"></i>
+                  </a>
+                </span>
+                <span id="toc-menu"><a href=""><i class="fa fa-list-alt"></i></a></span>
+                
+                
+
+
+
+
+
+
+
+ <a href='/'>Home</a> > <a href='/cheatsheets/'>Cheatsheets Collection</a> > Clean Code
+
+ 
+
+ 
+
+ 
+            </div>
+            <div class="progress">
+    <div class="wrapper">
+<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#formatting-ordering">Formatting &amp; Ordering</a>
+<ul>
+<li><a href="#dependant-functions">Dependant Functions</a></li>
+<li><a href="#conceptual-affinity">Conceptual Affinity</a></li>
+<li><a href="#horizontal-alignment">Horizontal Alignment</a></li>
+</ul></li>
+<li><a href="#objects-data-structures">Objects &amp; Data Structures</a></li>
+<li><a href="#law-of-demeter">Law of Demeter</a></li>
+<li><a href="#exception-handling">Exception Handling</a>
+<ul>
+<li><a href="#checked-exceptions">Checked Exceptions</a></li>
+</ul></li>
+<li><a href="#boundaries">Boundaries</a>
+<ul>
+<li><a href="#learning-tests">Learning Tests</a></li>
+</ul></li>
+<li><a href="#testing">Testing</a>
+<ul>
+<li><a href="#the-three-laws-of-tdd">The three laws of TDD</a></li>
+</ul></li>
+<li><a href="#logging">Logging</a></li>
+</ul></li>
+</ul>
+</nav>
+    </div>
+</div>
+
+          </div>
+        
+        
+        <div id="body-inner">
+          
+            <h1>Clean Code</h1>
+          
+
+
+
+
+
+
+<p>This is a summary of the most important and revealing topics from my point of view. These have, for now,
+been gathered from the <em>official</em> Clean Code books by <em>Uncle Bob</em> (Robert C. Martin).
+Quotes indicate literal sections from these books.</p>
+
+<p>Clean Code: A Handbook of Agile Software Craftsmanship (ISBN-13: 978-0132350884)</p>
+
+<p>The Clean Coder: A Code of Conduct for Professional Programmers (ISBN-13: 978-0137081073)</p>
+
+<p>The cheat sheet should be helpful as a guideline in reviews or when in doubt about the cleanliness of some code.</p>
+
+<p>TODO: levels of detail (bad TODO, already forgot what I meant)</p>
+
+<h2 id="formatting-ordering">Formatting &amp; Ordering</h2>
+
+<p>As a general note, every project should have a clearly defined style of formatting elaborated and followed by the whole team.
+Code is usually the easiest way to describe these rules.</p>
+
+<h3 id="dependant-functions">Dependant Functions</h3>
+
+<p>Dependant functions should be close to each other and in the order of their call, if possible. Helps with readability and natural flow.
+Nice example: Static factory methods on top before private constructor.</p>
+
+<h3 id="conceptual-affinity">Conceptual Affinity</h3>
+
+<p>Even if the functions have no direct dependency, they might be conceptually very similar and should thus be grouped/close.</p>
+
+<h3 id="horizontal-alignment">Horizontal Alignment</h3>
+
+<p>Spacing e.g. the types and names of member variables of a class can be suboptimal
+as it may disconnect the relation between the names and type of a variable.
+If there are such long lists of variables or assignments it&rsquo;s probably a hint to split the class/function.</p>
+
+<h2 id="objects-data-structures">Objects &amp; Data Structures</h2>
+
+<p>Nice differentiation about data vs. object
+&gt; Procedural code (code using data structures) makes it easy to add new functions without changing the existing data structures.
+&gt; OO code, on the other hand, makes it easy to add new classes without changing existing functions.</p>
+
+<p>Complement:
+&gt; Procedural code makes it hard to add new data structures because all the functions must change.
+&gt; OO code makes it hard to add new functions because all the classes must change.</p>
+
+<p>In essence:
+- Objects expose abstractions and functions
+- Data structures expose their data (e.g. data transfer objects DTO)</p>
+
+<p>Goal is to have a clear separation between these to types. Can also be seen as data vs. business logic.</p>
+
+<h2 id="law-of-demeter">Law of Demeter</h2>
+
+<p>Train wrecks and stuff. Not really sure about that yet..
+Law of Demeter only applies to objects and not to data structures.</p>
+
+<h2 id="exception-handling">Exception Handling</h2>
+
+<p>Write try-catch-finally first, test it, narrow and refine it.</p>
+
+<p>Add meaningful messages to each and every exception you throw.</p>
+
+<p>Always think of exceptions form the perspective of the caller/catcher. Only create different exception classes if you need to catch it at different places.</p>
+
+<p>Special case objects instead of exception may be a nicer flow for the caller.</p>
+
+<p>Don&rsquo;t return null, throw exceptions or return special case. In Java8 there would even be the possibility to wrap the whole thing into an Optional to make the handling easier.</p>
+
+<h3 id="checked-exceptions">Checked Exceptions</h3>
+
+<p>The war is over, checked exceptions lost, move on.</p>
+
+<p>In general their violation of OCP is the most important drawback. It leads to massive decapsulation (seems like this is no CS term, but I&rsquo;ll use it anyway) in your code base.
+It might be still handy in a few situations, but be sure to bring lots of arguments for your use!</p>
+
+<p>Also frameworks like Spring use unchecked exceptions pretty much exclusively and even wrap checked into unchecked ones for you.</p>
+
+<h2 id="boundaries">Boundaries</h2>
+
+<p>Encapsulate mutable objects if necessary. Possibly wrap them into immutable of needed to pass anyways.</p>
+
+<h3 id="learning-tests">Learning Tests</h3>
+
+<p>Nice idea to validate possible use, ensure functionality and learn the API of third party library.</p>
+
+<h2 id="testing">Testing</h2>
+
+<p>Build - Operate - Check should be clearly visible when looking at tests</p>
+
+<h3 id="the-three-laws-of-tdd">The three laws of TDD</h3>
+
+<blockquote>
+<ol>
+<li>You may not write production code until you have written a failing unit test.</li>
+<li>You may not write mor of a unit test than is sufficient to fail, and not compiling is failing.</li>
+<li>You may not write more production code than is sufficient to pass the currently failing test.</li>
+</ol>
+</blockquote>
+
+<h2 id="logging">Logging</h2>
+
+<p>A log message without a dynamic component (think placeholder) is useless.</p>
+
+
+<footer class=" footline" >
+	
+</footer>
+
+
+
+      </div>
+    </div>
+
+    
+ 
+    
+
+    <div id="navigation">
+        
+        
+        
+        
+            
+            
+                
+                    
+                    
+                
+                
+                
+                    
+            
+            
+                
+                    
+                    
+                
+                
+                
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                    
+                
+                
+                
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                        
+                        
+                    
+                
+                
+                
+            
+        
+                    
+                        
+            
+            
+                
+                    
+                
+                
+                
+            
+        
+                    
+                
+            
+        
+        
+        
+
+
+        
+            <a class="nav nav-prev" href="/cheatsheets/" title="Cheatsheets Collection"> <i class="fa fa-chevron-left"></i></a>
+        
+        
+            <a class="nav nav-next" href="/cheatsheets/docker/" title="Docker" style="margin-right: 0px;"><i class="fa fa-chevron-right"></i></a>
+        
+    </div>
+
+    </section>
+    <div style="left: -1000px; overflow: scroll; position: absolute; top: -1000px; border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;">
+      <div style="border: none; box-sizing: content-box; height: 200px; margin: 0px; padding: 0px; width: 200px;"></div>
+    </div>
+    <script src="/js/clipboard.min.js"></script>
+    <script src="/js/jquery.sticky-kit.min.js"></script>
+    <script src="/js/featherlight.min.js"></script>
+    <script src="/js/html5shiv-printshiv.min.js"></script>
+    <script src="/js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <script src="/js/modernizr.custom.71422.js"></script>
+    <script src="/js/learn.js"></script>
+    <script src="/js/hugo-learn.js"></script>
+
+    
+    <link href="/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+    <script src="/mermaid/mermaid.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    
+
+    
+
+  </body>
+</html>
+
