@@ -236,42 +236,38 @@ just adding even an external one, seems to kill the Wi-Fi interface. So what has
 <h2 id="container-management">Container management</h2>
 
 <p>Find the IP address of a running container</p>
-
-<pre><code> docker inspect &lt;container&gt; -f &quot;{{ .NetworkSettings.IPAddress }}&quot;
-</code></pre>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span> docker inspect &lt;container&gt; -f <span style="color: #e6db74">&quot;{{ .NetworkSettings.IPAddress }}&quot;</span>
+</pre></div>
 
 <p>Filtering inspect inspect is achieved with <a href="https://golang.org/pkg/text/template/">GO templating</a>.</p>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># Combine with static text</span>
+docker inspect storage -f <span style="color: #e6db74">&quot;The container {{.Config.Hostname}}{{.Name}} has IP {{ .NetworkSettings.IPAddress }}&quot;</span>
 
-<pre><code># Combine with static text
-docker inspect storage -f &quot;The container {{.Config.Hostname}}{{.Name}} has IP {{ .NetworkSettings.IPAddress }}&quot;
+<span style="color: #75715e"># Or techie for all containers for later reuse</span>
+docker inspect <span style="color: #66d9ef">$(</span>docker ps<span style="color: #f8f8f2">|</span>awk <span style="color: #e6db74">&#39;{print $1}&#39;</span><span style="color: #f8f8f2">|</span>grep -iv container<span style="color: #66d9ef">)</span> -f <span style="color: #e6db74">&quot;{{.Config.Hostname}}={{ .NetworkSettings.IPAddress }}&quot;</span>
+<span style="color: #f8f8f2">f445927fa494</span><span style="color: #f92672">=</span><span style="color: #ae81ff">172</span>.17.0.2
 
-# Or techy for all containers for later reuse
-docker inspect $(docker ps|awk '{print $1}'|grep -iv container) -f &quot;{{.Config.Hostname}}={{ .NetworkSettings.IPAddress }}&quot;
-f445927fa494=172.17.0.2
-
-# A little cleaner
-docker ps -q | xargs docker inspect -f &quot;{{.Config.Hostname}}={{ .NetworkSettings.IPAddress }}&quot;
-f445927fa494=172.17.0.2
-</code></pre>
+<span style="color: #75715e"># A little cleaner</span>
+docker ps -q <span style="color: #f8f8f2">|</span> xargs docker inspect -f <span style="color: #e6db74">&quot;{{.Config.Hostname}}={{ .NetworkSettings.IPAddress }}&quot;</span>
+<span style="color: #f8f8f2">f445927fa494</span><span style="color: #f92672">=</span><span style="color: #ae81ff">172</span>.17.0.2
+</pre></div>
 
 <p>Cleanup got a whole lot easier since 1.13! Instead of the piped dangling=true calls one can now:</p>
-
-<pre><code>docker system prune
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span>docker system prune
 docker container prune
 docker image prune
 docker volume prune
 docker network prune
-</code></pre>
+</pre></div>
 
 <p>For reference, pre 1.13 this would have looked like</p>
-
-<pre><code># Remove dead containers
-docker ps -f status=dead --format '{{ .ID }}' | xargs -r docker rm -v
-# Remove dangling volumes
-docker volume ls -qf dangling=true | xargs -r docker volume rm
-# Remove dangling images
-docker images -qf dangling=true | xargs -r docker rmi
-</code></pre>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #75715e"># Remove dead containers</span>
+docker ps -f <span style="color: #f8f8f2">status</span><span style="color: #f92672">=</span>dead --format <span style="color: #e6db74">&#39;{{ .ID }}&#39;</span> <span style="color: #f8f8f2">|</span> xargs -r docker rm -v
+<span style="color: #75715e"># Remove dangling volumes</span>
+docker volume ls -qf <span style="color: #f8f8f2">dangling</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">true</span> <span style="color: #f8f8f2">|</span> xargs -r docker volume rm
+<span style="color: #75715e"># Remove dangling images</span>
+docker images -qf <span style="color: #f8f8f2">dangling</span><span style="color: #f92672">=</span><span style="color: #f8f8f2">true</span> <span style="color: #f8f8f2">|</span> xargs -r docker rmi
+</pre></div>
 
 <h2 id="dockerfile">Dockerfile</h2>
 

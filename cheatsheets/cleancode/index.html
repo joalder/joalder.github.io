@@ -218,6 +218,11 @@ parent
 <li><a href="#testing">Testing</a>
 <ul>
 <li><a href="#the-three-laws-of-tdd">The three laws of TDD</a></li>
+<li><a href="#single-assert">Single Assert</a></li>
+</ul></li>
+<li><a href="#classes">Classes</a>
+<ul>
+<li><a href="#basic-layout-by-java-convention">Basic Layout by Java Convention</a></li>
 </ul></li>
 <li><a href="#logging">Logging</a></li>
 </ul></li>
@@ -331,6 +336,9 @@ It might be still handy in a few situations, but be sure to bring lots of argume
 
 <p>Build - Operate - Check should be clearly visible when looking at tests</p>
 
+<p>A (unit)test should be <strong>fast</strong> to execute, <strong>independent</strong> of each other, <strong>repeatable</strong> in any environment,
+<strong>self-validating</strong> meaning they should know if they passed or failed and <strong>timely</strong> written.</p>
+
 <h3 id="the-three-laws-of-tdd">The three laws of TDD</h3>
 
 <blockquote>
@@ -340,6 +348,34 @@ It might be still handy in a few situations, but be sure to bring lots of argume
 <li>You may not write more production code than is sufficient to pass the currently failing test.</li>
 </ol>
 </blockquote>
+
+<h3 id="single-assert">Single Assert</h3>
+
+<p>Some say, that there should only be a single assert per test. However this can lead to a violation of the DRY principle.
+Probably better to say that the number of asserts should be minimized.</p>
+
+<h2 id="classes">Classes</h2>
+
+<h3 id="basic-layout-by-java-convention">Basic Layout by Java Convention</h3>
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span></span><span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Layout</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">CONSTANT</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;CONSTANT&quot;</span><span style="color: #f92672">;</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">variable</span><span style="color: #f92672">;</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">counter</span><span style="color: #f92672">;</span>
+    
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">doStuff</span><span style="color: #f92672">(){</span>
+        <span style="color: #f8f8f2">util</span><span style="color: #f92672">();</span>
+    <span style="color: #f92672">}</span>
+    
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">util</span><span style="color: #f92672">(){</span>
+        <span style="color: #75715e">// Do more stuff</span>
+    <span style="color: #f92672">}</span>
+    
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">doOtherStuff</span><span style="color: #f92672">(){</span>
+        <span style="color: #75715e">// Other stuff</span>
+    <span style="color: #f92672">}</span>
+    
+<span style="color: #f92672">}</span>
+</pre></div>
 
 <h2 id="logging">Logging</h2>
 

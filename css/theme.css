@@ -1297,3 +1297,6 @@ pre .copy-to-clipboard:hover {
     margin-top: 5px;
 }
 
+pre {
+    color: #cacaca;
+}
