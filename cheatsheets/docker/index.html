@@ -237,12 +237,12 @@ just adding even an external one, seems to kill the Wi-Fi interface. So what has
 
 <p>Find the IP address of a running container</p>
 
-<pre><code class="language-shell"> docker inspect &lt;container&gt; -f &quot;{{ .NetworkSettings.IPAddress }}&quot;
+<pre><code> docker inspect &lt;container&gt; -f &quot;{{ .NetworkSettings.IPAddress }}&quot;
 </code></pre>
 
 <p>Filtering inspect inspect is achieved with <a href="https://golang.org/pkg/text/template/">GO templating</a>.</p>
 
-<pre><code class="language-shell"># Combine with static text
+<pre><code># Combine with static text
 docker inspect storage -f &quot;The container {{.Config.Hostname}}{{.Name}} has IP {{ .NetworkSettings.IPAddress }}&quot;
 
 # Or techy for all containers for later reuse
@@ -256,7 +256,7 @@ f445927fa494=172.17.0.2
 
 <p>Cleanup got a whole lot easier since 1.13! Instead of the piped dangling=true calls one can now:</p>
 
-<pre><code class="language-shell">docker system prune
+<pre><code>docker system prune
 docker container prune
 docker image prune
 docker volume prune
@@ -265,7 +265,7 @@ docker network prune
 
 <p>For reference, pre 1.13 this would have looked like</p>
 
-<pre><code class="language-shell"># Remove dead containers
+<pre><code># Remove dead containers
 docker ps -f status=dead --format '{{ .ID }}' | xargs -r docker rm -v
 # Remove dangling volumes
 docker volume ls -qf dangling=true | xargs -r docker volume rm
